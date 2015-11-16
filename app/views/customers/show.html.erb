@@ -1,0 +1,8 @@
+<h2><%=@customer.name %></h2>
+<ul>
+  <li><%=@customer.year %></li>
+  <li><%=@customer.email %></li>
+  <li><%=@customer.meals %></li>
+</ul>
+
+<%= link_to "Edit", edit_customer_path(@customer)%>

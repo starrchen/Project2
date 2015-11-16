@@ -1,7 +1,7 @@
-<%@restaurants.each do |restaurant| %>
-<%=restaurant.name %>
-<%=restaurant.contact %>
-<%=restaurant.email %>
-<%=restaurant.phone %>
-<%=restaurant.menu %>
-<%end%>
+<h2><%=@restaurant.name %></h2>
+<ul>
+  <li><%=@restaurant.contact %></li>
+  <li><%=@restaurant.email %></li>
+  <li><%=@restaurant.phone %></li>
+  <li><%=@restaurant.menu %></li>
+</ul>

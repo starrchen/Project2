@@ -1,5 +1,6 @@
 class RestaurantsController < ApplicationController
 before_action :set_restaurant, only: [:show,:edit,:update,:destroy]
+before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @restaurants = Restaurant.all
@@ -28,7 +29,7 @@ before_action :set_restaurant, only: [:show,:edit,:update,:destroy]
 
   def destroy
     @restaurant.destroy
-    redirect_to restaurant_path
+    redirect_to restaurants_path
   end
 
   private

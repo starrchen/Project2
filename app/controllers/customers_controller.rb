@@ -1,5 +1,6 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show,:edit,:update,:destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @customers = Customer.all
@@ -28,13 +29,13 @@ class CustomersController < ApplicationController
 
   def destroy
     @customer.destroy
-    redirect_to customer_path
+    redirect_to customers_path
   end
 
 
   private
   def customer_params
-    params.require(:customer).permit(:name,:year,:email,:meals)
+    params.require(:customer).permit(:name,:year,:email,:plan)
   end
 
   def set_customer

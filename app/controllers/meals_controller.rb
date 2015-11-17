@@ -25,6 +25,4 @@ class MealsController < ApplicationController
   def update
   end
 
-
-
 end

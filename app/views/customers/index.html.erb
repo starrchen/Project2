@@ -1,13 +1,10 @@
-<h2>Customers</h2>
-
-
-  <%= link_to "Create Customer", new_customer_path %>
-
-
-<ul>
-<%@customers.each do |customer| %>
-  <li>
-    <%=link_to customer.name, customer_path(customer) %>
-  </li>
-<%end%>
-</ul>
+<div class="jumbotron vertical-center">
+  <h2>Customers <%= link_to "(+)", new_customer_path %></h2>
+  <ul>
+    <%@customers.each do |customer| %>
+    <li>
+      <%=link_to customer.name, customer_path(customer) %>
+    </li>
+    <%end%>
+  </ul>
+</div>

@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-before_action :set_restaurant, only: [:show,:edit,:update,:destroy]
+before_action :set_restaurant, only: [:show,:edit,:update,:destroy,:subtract]
 before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
@@ -7,7 +7,9 @@ before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destro
   end
 
   def show
-
+    @customers = Customer.all
+    @meal = Meal.new
+    @meals = @restaurant.meals.all
   end
 
   def new
@@ -31,6 +33,12 @@ before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destro
     @restaurant.destroy
     redirect_to restaurants_path
   end
+
+  # def subtract
+  #   @customer = Customer.find(params[:id])
+  #   @customer.update_attributes(plan: (@customer.plan - 1))
+  #   redirect_to restaurant_path(@restaurant)
+  # end
 
   private
   def restaurant_params

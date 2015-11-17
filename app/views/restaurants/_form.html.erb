@@ -1,13 +1,26 @@
-<%= form_for @restaurant do |f| %>
-<%= f.label :name %>
-<%= f.text_field :name %>
-<%= f.label :contact %>
-<%= f.text_field :contact %>
-<%= f.label :email %>
-<%= f.text_field :email %>
-<%= f.label :phone %>
-<%= f.text_field :phone %>
-<%= f.label :menu %>
-<%= f.text_field :menu %>
-<%= f.submit%>
-<%end%>
+
+  <%= form_for @restaurant do |f| %>
+<form role="form">
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name%>
+  </div>
+  <div class="form-group">
+    <%= f.label :contact %>
+    <%= f.text_field :contact%>
+  </div>
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div class="form-group">
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="form-group">
+    <%= f.label :menu %>
+    <%= f.text_field :menu %>
+  </div>
+  <%= f.submit%>
+  </form>
+  <%end%>

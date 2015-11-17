@@ -13,3 +13,36 @@
  *= require_tree .
  *= require_self
  */
+
+
+$jumbotron-bg: #167786;
+.jumbotron {
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 6px;
+}
+
+.jumbotron li {
+  list-style-type: none;
+  text-align: center;
+  color: black;
+}
+
+.jumbotron ul {
+  padding-left: 0;
+}
+
+.jumbotron a:link {
+  color: black;
+}
+
+.jumbotron a:visited {
+  color: black;
+}
+
+.jumbotron a:active {
+  color: white;
+}
+
+@import "bootstrap"

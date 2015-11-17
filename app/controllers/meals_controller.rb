@@ -16,7 +16,7 @@ class MealsController < ApplicationController
     @restaurant = Restaurant.find(params[:restaurant_id])
     @customer = Customer.find(params[:customer_id])
     @customer.meals.create(restaurant_id: params[:restaurant_id])
-    redirect_to restaurant_path(@restaurant)
+    redirect_to customer_path(@customer)
   end
 
   def edit

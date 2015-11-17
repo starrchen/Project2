@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module Project2
   class Application < Rails::Application
+    config.time_zone = 'Eastern Time (US & Canada)'
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -22,5 +23,6 @@ module Project2
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
   end
 end

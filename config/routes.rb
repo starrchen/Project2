@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :restaurants do
     resources :meals
   end
-  resources :customers
+  resources :customers do
+    resources :meals
+  end
 
 end

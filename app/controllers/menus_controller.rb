@@ -6,7 +6,7 @@ class MenusController < ApplicationController
 
   def new
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @menus = @restaurant.menus.new
+    @menu = @restaurant.menus.new
   end
 
   def create

@@ -7,7 +7,7 @@ before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destro
     @meal.status = "closed"
     redirect_to restaurant_path(@restaurant)
   end
-  
+
   def index
     @restaurants = Restaurant.all
   end
@@ -16,6 +16,7 @@ before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destro
     @customers = Customer.all
     @meal = Meal.new
     @meals = @restaurant.meals.all
+    @menus = @restaurant.menus.all
   end
 
   def new

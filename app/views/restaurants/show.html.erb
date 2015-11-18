@@ -4,7 +4,7 @@
     <li>Contact: <%=@restaurant.contact %></li>
     <li>Email: <%=@restaurant.email %></li>
     <li>Phone: <%=@restaurant.phone %></li>
-    <li>Menu: <%=@restaurant.menu %></li>
+    <li><%= link_to "View Menu", restaurant_menus_path(@restaurant), :class => "btn btn-default"%></li>
   </ul>
 
   <%= link_to "Edit", edit_restaurant_path(@restaurant), :class => "btn btn-default"%>

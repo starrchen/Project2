@@ -6,11 +6,10 @@ class MealsController < ApplicationController
   end
 
   def show
-
   end
 
   def new
-    @restaurant = Restaraunt.find(params[:restaurant_id])
+    @restaurant = Restaurant.find(params[:restaurant_id])
     @meal = @restaurant.meals.new
   end
 

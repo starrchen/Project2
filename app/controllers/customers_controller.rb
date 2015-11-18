@@ -10,6 +10,8 @@ class CustomersController < ApplicationController
     @restaurants = Restaurant.all
     @meal = Meal.new
     @meals = @customer.meals.all
+    @plan = @customer.plan
+    @meals_remaining = ((@customer.plan)-@customer.meals.where(status: "closed").count)
   end
 
   def new

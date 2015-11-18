@@ -4,7 +4,7 @@
     <li>Year: <%=@customer.year %></li>
     <li>Email: <%=@customer.email %></li>
     <li>Plan selected: <%=@customer.plan %></li>
-    <li>Meals remaining: <%=(@customer.plan)-(@customer.meals.where(status: "closed").count) %></li>
+    <li>Meals remaining: <%=@meals_remaining %></li>
   </ul>
 
   <% if current_user %>
@@ -15,6 +15,7 @@
 
 
   <h3>Restaurants</h3>
+  <%if @meals_remaining > 0%>
   <ul>
     <%@restaurants.each do |restaurant| %>
     <li>
@@ -27,7 +28,9 @@
       <%end%>
     </li>
   </ul>
-
+  <%else%>
+  <%="You're out of meals, please purchase more in order to continue"%>
+  <%end%>
   <h3>Meals</h3>
   <ul>
     <%@meals.each do |meal| %>

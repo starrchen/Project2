@@ -12,8 +12,6 @@
   <%= link_to "Delete", customer_path(@customer), :class => "btn btn-default", method: :delete%>
   <%end%>
 
-
-
   <h3>Restaurants</h3>
   <%if @meals_remaining > 0%>
   <ul>
@@ -21,6 +19,11 @@
     <li>
       <%=restaurant.name%>
       <%= form_for [@customer,@meal] do |f| %>
+      <select name="food_item">
+         <%= restaurant.menus.each do |menu|  %>
+         <option value="<%= menu.name %>"><%=menu.name %></option>
+         <%end%>
+       </select>
       <%= hidden_field_tag :restaurant_id, restaurant.id %>
       <%= hidden_field_tag :status, "open" %>
       <%= f.submit "Add meal"%>
@@ -36,7 +39,9 @@
     <%@meals.each do |meal| %>
     <li>
       <%=Restaurant.find(meal.restaurant_id).name%>
+      <%=meal.food_item%>
       <%=meal.created_at.strftime("%B %d, %Y %I:%M%p")%>
+      <%=meal.status%>
     </li>
     <%end%>
   </ul>

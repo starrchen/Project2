@@ -17,11 +17,12 @@
     <li>
       <%=Restaurant.find(meal.restaurant_id).name%>
       <%=Customer.find(meal.customer_id).name%>
-        <%= form_for [@restaurant, meal] do |f| %>
-        <%= hidden_field_tag :meal_id, meal.id %>
-        <%= hidden_field_tag :status, "closed" %>
-        <%= f.submit "Update meal"%>
-        <%end%>
+      <%=meal.food_item%>
+      <%= form_for [@restaurant, meal] do |f| %>
+      <%= hidden_field_tag :meal_id, meal.id %>
+      <%= hidden_field_tag :status, "closed" %>
+      <%= f.submit "Confirm meal"%>
+      <%end%>
 
 
     </li>

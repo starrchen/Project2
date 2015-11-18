@@ -3,38 +3,39 @@
   <ul>
     <li>Year: <%=@customer.year %></li>
     <li>Email: <%=@customer.email %></li>
-    <li>Meals: <%=@customer.plan %></li>
+    <li>Plan selected: <%=@customer.plan %></li>
+    <li>Meals remaining: <%=(@customer.plan)-(@customer.meals.where(status: "closed").count) %></li>
   </ul>
 
   <% if current_user %>
-    <%= link_to "Edit", edit_customer_path(@customer), :class => "btn btn-default"%>
-    <%= link_to "Delete", customer_path(@customer), :class => "btn btn-default", method: :delete%>
+  <%= link_to "Edit", edit_customer_path(@customer), :class => "btn btn-default"%>
+  <%= link_to "Delete", customer_path(@customer), :class => "btn btn-default", method: :delete%>
   <%end%>
-</div>
 
 
-<h3>Restaurants</h3>
-<ul>
-  <%@restaurants.each do |restaurant| %>
-  <li>
+
+  <h3>Restaurants</h3>
+  <ul>
+    <%@restaurants.each do |restaurant| %>
+    <li>
       <%=restaurant.name%>
       <%= form_for [@customer,@meal] do |f| %>
-        <%= hidden_field_tag :restaurant_id, restaurant.id %>
-        <%= hidden_field_tag :status, "open" %>
+      <%= hidden_field_tag :restaurant_id, restaurant.id %>
+      <%= hidden_field_tag :status, "open" %>
       <%= f.submit "Add meal"%>
       <%end%>
-  <%end%>
-  </li>
-</ul>
+      <%end%>
+    </li>
+  </ul>
 
-<h3>Meals</h3>
-<ul>
-<%@meals.each do |meal| %>
-<li>
-<%=Restaurant.find(meal.restaurant_id).name%>
-<%=Customer.find(meal.customer_id).name%>
-<%=meal.created_at.strftime("%B %d, %Y %I:%M%p")%>
-</li>
-<%end%>
-</ul>
+  <h3>Meals</h3>
+  <ul>
+    <%@meals.each do |meal| %>
+    <li>
+      <%=Restaurant.find(meal.restaurant_id).name%>
+      <%=meal.created_at.strftime("%B %d, %Y %I:%M%p")%>
+    </li>
+    <%end%>
+  </ul>
+</div>
 </div>

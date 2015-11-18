@@ -1,38 +1,31 @@
 <div class="jumbotron vertical-center">
-<h2><%=@restaurant.name %></h2>
-<ul>
-  <li>Contact: <%=@restaurant.contact %></li>
-  <li>Email: <%=@restaurant.email %></li>
-  <li>Phone: <%=@restaurant.phone %></li>
-  <li>Menu: <%=@restaurant.menu %></li>
-</ul>
+  <h2><%=@restaurant.name %></h2>
+  <ul>
+    <li>Contact: <%=@restaurant.contact %></li>
+    <li>Email: <%=@restaurant.email %></li>
+    <li>Phone: <%=@restaurant.phone %></li>
+    <li>Menu: <%=@restaurant.menu %></li>
+  </ul>
 
-<%= link_to "Edit", edit_restaurant_path(@restaurant), :class => "btn btn-default"%>
-<%= link_to "Delete", restaurant_path(@restaurant),:class => "btn btn-default", method: :delete%>
+  <%= link_to "Edit", edit_restaurant_path(@restaurant), :class => "btn btn-default"%>
+  <%= link_to "Delete", restaurant_path(@restaurant),:class => "btn btn-default", method: :delete%>
+
+  <h3>Meals</h3>
+  <ul>
+    <%@meals.each do |meal| %>
+    <%if meal.status == "open" %>
+    <li>
+      <%=Restaurant.find(meal.restaurant_id).name%>
+      <%=Customer.find(meal.customer_id).name%>
+        <%= form_for [@restaurant, meal] do |f| %>
+        <%= hidden_field_tag :meal_id, meal.id %>
+        <%= hidden_field_tag :status, "closed" %>
+        <%= f.submit "Update meal"%>
+        <%end%>
 
 
-<h3>Customers</h3>
-<ul>
-  <%@customers.each do |customer| %>
-  <li>
-      <%=customer.name%>
-      <%=customer.plan%>
-      <%=customer.id%>
-      <%= form_for [@restaurant,@meal] do |f| %>
-        <%= hidden_field_tag :customer_id, customer.id %>
-      <%= f.submit "Add meal"%>
-      <%end%>
-  <%end%>
-  </li>
-</ul>
-
-<h3>Meals</h3>
-<ul>
-<%@meals.each do |meal| %>
-<li>
-<%=Restaurant.find(meal.restaurant_id).name%>
-<%=Customer.find(meal.customer_id).name%>
-</li>
-<%end%>
-</ul>
+    </li>
+    <%end%>
+    <%end%>
+  </ul>
 </div>

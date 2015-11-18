@@ -2,6 +2,12 @@ class RestaurantsController < ApplicationController
 before_action :set_restaurant, only: [:show,:edit,:update,:destroy,:subtract]
 before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
+  def status_close
+    @meal = Meal.find(params[:meal_id])
+    @meal.status = "closed"
+    redirect_to restaurant_path(@restaurant)
+  end
+  
   def index
     @restaurants = Restaurant.all
   end

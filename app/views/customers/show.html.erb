@@ -20,6 +20,7 @@
       <%=restaurant.name%>
       <%= form_for [@customer,@meal] do |f| %>
         <%= hidden_field_tag :restaurant_id, restaurant.id %>
+        <%= hidden_field_tag :status, "open" %>
       <%= f.submit "Add meal"%>
       <%end%>
   <%end%>

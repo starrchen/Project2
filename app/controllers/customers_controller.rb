@@ -2,7 +2,7 @@ class CustomersController < ApplicationController
   before_action :set_customer, only: [:show,:edit,:update,:destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   load_and_authorize_resource
-  
+
   def index
     @customers = Customer.all
   end
@@ -10,7 +10,7 @@ class CustomersController < ApplicationController
   def show
     @restaurants = Restaurant.all
     @meal = Meal.new
-    @meals = @customer.meals.all
+    @meals = @customer.meals.all.order(created_at: :desc)
     @plan = @customer.plan
     @meals_remaining = ((@customer.plan)-@customer.meals.where(status: "closed").count)
   end

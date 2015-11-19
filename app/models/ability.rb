@@ -8,11 +8,12 @@ class Ability
       if user.role == "admin"
         can :manage, :all
       elsif user.role == "restaurant"
-        can :manage, [Restaurant]
-
+        can [:update, :read], [Restaurant, Meal]
       elsif user.role == "customer"
-        can :manage, Customer
-
+        can [:update, :read], [Customer]
+        can [:update, :read, :create], [Meal]
+      else
+        can :read, :all
       end
     #
     # The first argument to `can` is the action you are giving the user

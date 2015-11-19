@@ -23,8 +23,12 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav navbar-right">
+          <% if can? :update, Restaurant %>
           <li><%= link_to "Restaurants", restaurants_path%></li>
+          <%end%>
+          <% if can? :update, Customer %>
           <li><%= link_to "Customers", customers_path%></li>
+          <%end%>
           <% if current_user %>
             <li><%= link_to 'Signout', destroy_user_session_path, :method => :delete %></li>
           <% else %>

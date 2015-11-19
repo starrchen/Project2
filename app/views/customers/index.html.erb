@@ -1,5 +1,7 @@
 <div class="jumbotron vertical-center">
-  <h2>Customers <%= link_to "(+)", new_customer_path %></h2>
+
+  <h2>Customers <% if current_user.role == "admin"%><%= link_to "(+)", new_customer_path %><%end%></h2>
+
   <ul>
     <%@customers.each do |customer| %>
     <li>

@@ -1,7 +1,6 @@
 class MealsController < ApplicationController
 
 
-
   def index
   end
 
@@ -33,6 +32,6 @@ class MealsController < ApplicationController
 
   private
   def meal_params
-    params.require(:meal).permit(:status)
+    params.require(:meal).permit(:restaurant_id,:status,:food_item)
   end
 end

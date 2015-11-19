@@ -1,6 +1,7 @@
 class RestaurantsController < ApplicationController
 before_action :set_restaurant, only: [:show,:edit,:update,:destroy,:subtract]
 before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+load_and_authorize_resource
 
   def status_close
     @meal = Meal.find(params[:meal_id])

@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-before_action :set_restaurant, only: [:show,:edit,:update,:destroy,:subtract]
+before_action :set_restaurant, only: [:show,:edit,:update,:destroy,:subtract] # if you took out the subtract method below, do you need this before_action to include it?
 before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 load_and_authorize_resource
 

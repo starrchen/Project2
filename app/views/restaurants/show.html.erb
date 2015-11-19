@@ -17,7 +17,7 @@
     <li>
       <%=Restaurant.find(meal.restaurant_id).name%>
       <%=Customer.find(meal.customer_id).name%>
-      <%=meal.food_item%>
+      <%=meal.food_item #I'd just recommend keeping this consistent as far as if you do spaces with your clown hats %>
       <%= form_for [@restaurant, meal] do |f| %>
       <%= hidden_field_tag :meal_id, meal.id %>
       <%= hidden_field_tag :status, "closed" %>

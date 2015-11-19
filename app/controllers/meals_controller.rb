@@ -15,7 +15,7 @@ class MealsController < ApplicationController
   def create
     @restaurant = Restaurant.find(params[:restaurant_id])
     @customer = Customer.find(params[:customer_id])
-    @customer.meals.create(restaurant_id: params[:restaurant_id], status: params[:status], food_item: params[:food_item])
+    @customer.meals.create(restaurant_id: params[:restaurant_id], status: params[:status], food_item: params[:food_item]) #Is this where you meant to use your meal_params strong param?
     redirect_to customer_path(@customer)
   end
 
